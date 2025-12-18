@@ -1,0 +1,15 @@
+
+{
+  "name": "tiktok-repost-remover",
+  "version": "1.2.1",
+  "description": "A Chrome extension to remove all reposted videos on TikTok",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.32",
+    "typescript": "^5.9.3"
+  }
+}

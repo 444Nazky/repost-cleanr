@@ -10,8 +10,10 @@
   "homepage_url": "https://chromewebstore.google.com/detail/tiktok-all-reposted-videos-remover/amgpfdpibiacligkkkbeonfhmonkgjhg",
   "permissions": ["scripting", "tabs"],
   "host_permissions": ["https://*.tiktok.com/*"],
+
+
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "dist/background.js"
   },
   "icons": {
     "16": "icon.png",
@@ -27,9 +29,11 @@
     "default_title": "TikTok All Reposted Video Remover",
     "default_popup": "popup.html"
   },
+
+
   "web_accessible_resources": [
     {
-      "resources": ["script.js", "styles.css"],
+      "resources": ["dist/script.js", "styles.css"],
       "matches": ["https://*.tiktok.com/*"]
     }
   ],
