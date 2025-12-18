@@ -1,72 +1,245 @@
-# TikTok All Reposted Videos Remover
+# 🧹 REPOST-CLEANR
 
-Remove all your reposted videos on TikTok automatically — no clicks, no scrolling, just one button.
+Bulk remove **all reposted TikTok videos** automatically.
 
-![Screenshot](demo.png)
-
----
-
-## GitAds Sponsored
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=gabireze/tiktok-all-reposted-videos-remover@github)](https://gitads.dev/v1/ad-track?source=gabireze/tiktok-all-reposted-videos-remover@github)
+**REPOST-CLEANR** is a lightweight **Chrome extension** that helps you clean your TikTok reposts without manually opening and unreposting videos one by one.
 
 ---
 
-## Features
+## ✨ Features
 
-- ✅ Opens your TikTok profile in a new tab automatically  
-- ✅ Accesses your "Reposts" tab  
-- ✅ Enters each reposted video and removes it from your reposts  
-- ✅ Proceeds to the next video until the list is empty  
-- ✅ Fully automatic — just start and let it run
-
----
-
-## Installation
-
-### From Chrome Web Store
-
-👉 [Install from Chrome Web Store](https://chromewebstore.google.com/detail/tiktok-all-reposted-video/amgpfdpibiacligkkkbeonfhmonkgjhg)
-
-### 🛠️ Manual Installation (for developers)
-
-1. Clone this repository or download the source code.
-2. Go to `chrome://extensions` in Google Chrome.
-3. Enable **Developer mode** (top right toggle).
-4. Click **"Load unpacked"** and select the project folder.
+* 🚀 One-click repost cleanup
+* 🤖 Fully automated (no manual clicking)
+* 🖥️ Chrome extension (HTML, CSS, JavaScript)
+* 🔒 Runs locally in your browser
+* 📦 Open-source & free
 
 ---
 
-## How to Use
+## 📁 Project Structure
 
-1. Make sure you're **logged in** to your TikTok account at [tiktok.com](https://tiktok.com).
-2. Click the extension icon in the Chrome toolbar.
-3. Click **"Start Removing Reposts"**.
-4. A new TikTok tab will open automatically.
-5. ✅ The extension will:
-   - Navigate to your profile
-   - Open the "Reposts" tab
-   - Remove each reposted video one by one
-6. Keep the tab open until the process finishes. **Do not close it** during the operation.
-
----
-
-## Important Notes
-
-- The process may take time depending on how many reposted videos you have.
-- If TikTok temporarily blocks actions (rate limiting), wait about **1 hour** and run the extension again.
-- To confirm everything was removed, **refresh your Reposts tab** after the process completes.
+```
+REPOST-CLEANR/
+├── _locales/
+├── background.js
+├── icon.png
+├── manifest.json
+├── popup.html
+├── popup.js
+├── script.js
+├── styles.css
+├── PRIVACY.md
+├── LICENSE
+└── README.md
+```
 
 ---
 
-## Contributing
+## 🧩 Installation (Developer Mode)
 
-Contributions are welcome!  
-If you find a bug or have an idea for improvement, feel free to open an issue or a pull request.
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/444Nazky/REPOST-CLEANR.git
+   ```
+
+2. Open **Google Chrome**
+
+3. Go to:
+
+   ```
+   chrome://extensions
+   ```
+
+4. Enable **Developer mode** (top right)
+
+5. Click **Load unpacked**
+
+6. Select the `REPOST-CLEANR` folder
 
 ---
 
-## License
+## 🚀 How to Use
 
-This project is licensed under the [MIT License](https://opensource.org/license/mit/).
+1. Log in to **TikTok** at [https://www.tiktok.com](https://www.tiktok.com)
+2. Click the **REPOST-CLEANR** extension icon
+3. Press **Start / Clean Reposts**
+4. A TikTok tab will open automatically
+5. The extension will:
 
-<!-- GitAds-Verify: 2U3RGGXDR7ECMBBHCE2Q94MLN5LUAPN6 -->
+   * Open your profile
+   * Navigate to the **Reposts** tab
+   * Remove reposted videos one by one
+
+⚠️ **Do not close the browser tab while it is running**
+
+---
+
+## ⚠️ Important Notes
+
+* ⏱️ Speed depends on how many reposts you have
+* 🚫 TikTok may temporarily block automation if used too frequently
+* 🔄 Refresh your profile after completion to confirm results
+
+This project is **not affiliated with TikTok**.
+
+---
+
+## 🔐 Privacy
+
+* No data is collected
+* No tracking or analytics
+* Runs entirely in your local browser session
+
+See [`PRIVACY.md`](./PRIVACY.md) for details.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome:
+
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Open a pull request
+
+---
+
+## 📜 License
+
+MIT License
+
+---
+
+## ⭐ Support
+
+If you find this useful:
+
+* ⭐ Star the repository
+* 🍴 Fork it
+* 📢 Share it
+
+Built by **@444Nazky** 🧼# 🧹 REPOST-CLEANR
+
+Bulk remove **all reposted TikTok videos** automatically.
+
+**REPOST-CLEANR** is a lightweight **Chrome extension** that helps you clean your TikTok reposts without manually opening and unreposting videos one by one.
+
+---
+
+## ✨ Features
+
+* 🚀 One-click repost cleanup
+* 🤖 Fully automated (no manual clicking)
+* 🖥️ Chrome extension (HTML, CSS, JavaScript)
+* 🔒 Runs locally in your browser
+* 📦 Open-source & free
+
+---
+
+## 📁 Project Structure
+
+```
+REPOST-CLEANR/
+├── _locales/
+├── background.js
+├── icon.png
+├── manifest.json
+├── popup.html
+├── popup.js
+├── script.js
+├── styles.css
+├── PRIVACY.md
+├── LICENSE
+└── README.md
+```
+
+---
+
+## 🧩 Installation (Developer Mode)
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/444Nazky/REPOST-CLEANR.git
+   ```
+
+2. Open **Google Chrome**
+
+3. Go to:
+
+   ```
+   chrome://extensions
+   ```
+
+4. Enable **Developer mode** (top right)
+
+5. Click **Load unpacked**
+
+6. Select the `REPOST-CLEANR` folder
+
+---
+
+## 🚀 How to Use
+
+1. Log in to **TikTok** at [https://www.tiktok.com](https://www.tiktok.com)
+2. Click the **REPOST-CLEANR** extension icon
+3. Press **Start / Clean Reposts**
+4. A TikTok tab will open automatically
+5. The extension will:
+
+   * Open your profile
+   * Navigate to the **Reposts** tab
+   * Remove reposted videos one by one
+
+⚠️ **Do not close the browser tab while it is running**
+
+---
+
+## ⚠️ Important Notes
+
+* ⏱️ Speed depends on how many reposts you have
+* 🚫 TikTok may temporarily block automation if used too frequently
+* 🔄 Refresh your profile after completion to confirm results
+
+This project is **not affiliated with TikTok**.
+
+---
+
+## 🔐 Privacy
+
+* No data is collected
+* No tracking or analytics
+* Runs entirely in your local browser session
+
+See [`PRIVACY.md`](./PRIVACY.md) for details.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome:
+
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Open a pull request
+
+---
+
+## 📜 License
+
+MIT License
+
+---
+
+## ⭐ Support
+
+If you find this useful:
+
+* ⭐ Star the repository
+* 🍴 Fork it
+* 📢 Share it
+
+Built by **@444Nazky** 🧼
