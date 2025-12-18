@@ -1,7 +1,5 @@
-/// <reference types="chrome" />
-
-// Country to currency code mapping
-const COUNTRY_CURRENCY_MAP: Record<string, string> = {
+// Mapeamento de países para códigos de moeda do PayPal
+const COUNTRY_CURRENCY_MAP = {
   US: "USD",
   CA: "CAD",
   GB: "GBP",
@@ -54,9 +52,9 @@ const COUNTRY_CURRENCY_MAP: Record<string, string> = {
   MT: "EUR",
   SK: "EUR",
   SI: "EUR",
-  EE: "EE",
-  LV: "LV",
-  LT: "LT",
+  EE: "EUR",
+  LV: "EUR",
+  LT: "EUR",
   PL: "PLN",
   CZ: "CZK",
   HU: "HUF",
@@ -131,13 +129,12 @@ const COUNTRY_CURRENCY_MAP: Record<string, string> = {
   TK: "NZD",
 };
 
-// Function to detect user's country using only browser resources
-function detectUserCountry(): string {
-
+// Função para detectar o país do usuário usando apenas recursos do navegador
+function detectUserCountry() {
   try {
-    // Method 1: Use browser timezone (more accurate)
+    // Método 1: Usar timezone do navegador (mais preciso)
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const timezoneCountryMap: Record<string, string> = {
+    const timezoneCountryMap = {
       // Americas
       "America/Sao_Paulo": "BR",
       "America/Argentina/Buenos_Aires": "AR",
@@ -232,17 +229,17 @@ function detectUserCountry(): string {
       "Africa/Nairobi": "KE",
     };
 
-    if (timezone && timezoneCountryMap[timezone]) {
+    if (timezoneCountryMap[timezone]) {
       return timezoneCountryMap[timezone];
     }
   } catch (error) {
-    console.log("Error detecting country via timezone:", error);
+    console.log("Erro ao detectar país via timezone:", error);
   }
 
   try {
-    // Method 2: Use browser locale
+    // Método 2: Usar o locale do navegador
     const locale = Intl.DateTimeFormat().resolvedOptions().locale;
-    const localeCountryMap: Record<string, string> = {
+    const localeCountryMap = {
       "pt-BR": "BR",
       "en-US": "US",
       "en-GB": "GB",
@@ -296,32 +293,26 @@ function detectUserCountry(): string {
       "lt-LT": "LT",
     };
 
-    if (locale && localeCountryMap[locale]) {
+    if (localeCountryMap[locale]) {
       return localeCountryMap[locale];
     }
   } catch (error) {
-    console.log("Error detecting country via locale:", error);
+    console.log("Erro ao detectar país via locale:", error);
   }
 
-
   try {
-    // Method 3: Use navigator.language as fallback
-    const language = navigator.language;
-
-
-    if (language && language.includes("-")) {
-      const parts = language.split("-");
-      if (parts.length > 1 && parts[1]) {
-        const countryCode = parts[1].toUpperCase();
-        // Check if country code exists in our mapping
-        if (COUNTRY_CURRENCY_MAP[countryCode]) {
-          return countryCode;
-        }
+    // Método 3: Usar navigator.language como fallback
+    const language = navigator.language || navigator.userLanguage;
+    if (language.includes("-")) {
+      const countryCode = language.split("-")[1].toUpperCase();
+      // Verificar se o código de país existe no nosso mapeamento
+      if (COUNTRY_CURRENCY_MAP[countryCode]) {
+        return countryCode;
       }
     }
 
-    // Basic mapping by language
-    const languageCountryMap: Record<string, string> = {
+    // Mapeamento básico por idioma
+    const languageCountryMap = {
       pt: "BR",
       en: "US",
       fr: "FR",
@@ -347,77 +338,54 @@ function detectUserCountry(): string {
       fi: "FI",
     };
 
-
-
-    if (language) {
-      const parts = language.split("-");
-      if (parts.length > 0 && parts[0]) {
-        const languageCode = parts[0].toLowerCase();
-        if (languageCountryMap[languageCode]) {
-          return languageCountryMap[languageCode];
-        }
-      }
+    const languageCode = language.split("-")[0].toLowerCase();
+    if (languageCountryMap[languageCode]) {
+      return languageCountryMap[languageCode];
     }
   } catch (error) {
-    console.log("Error detecting country via language:", error);
+    console.log("Erro ao detectar país via language:", error);
   }
 
-  // Final fallback: US as default
+  // Fallback final: US como padrão
   return "US";
 }
 
-// Function to open PayPal donation
-function openDonation(): void {
+// Função para abrir doação do PayPal
+function openDonation() {
   const countryCode = detectUserCountry();
   const currencyCode = COUNTRY_CURRENCY_MAP[countryCode] || "USD";
+
   const donationUrl = `https://www.paypal.com/donate/?cmd=_donations&business=S34UMJ23659VY&currency_code=${currencyCode}`;
+
   chrome.tabs.create({ url: donationUrl });
 }
 
-document.addEventListener("DOMContentLoaded", function (): void {
-  // Process elements with data-i18n for innerHTML
-  document.querySelectorAll("[data-i18n]").forEach((element: Element) => {
+document.addEventListener("DOMContentLoaded", function () {
+  // Processa elementos com data-i18n para innerHTML
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.getAttribute("data-i18n");
-    const message = chrome.i18n.getMessage(key || "");
-    if (message && element instanceof HTMLElement) {
-      element.innerHTML = message;
-    }
+    const message = chrome.i18n.getMessage(key);
+    if (message) element.innerHTML = message;
   });
 
-  // Process elements with data-i18n-title for title attribute
-  document.querySelectorAll("[data-i18n-title]").forEach((element: Element) => {
+  // Processa elementos com data-i18n-title para atributo title
+  document.querySelectorAll("[data-i18n-title]").forEach((element) => {
     const key = element.getAttribute("data-i18n-title");
-    const message = chrome.i18n.getMessage(key || "");
-    if (message && element instanceof HTMLElement) {
-      element.title = message;
-    }
+    const message = chrome.i18n.getMessage(key);
+    if (message) element.title = message;
   });
 
   const startButton = document.getElementById("startButton");
   if (startButton) {
-    startButton.addEventListener("click", function (): void {
+    startButton.addEventListener("click", function () {
       chrome.runtime.sendMessage({ action: "removeRepostedVideos" });
     });
   }
 
-  // Debug button functionality
-  const debugButton = document.getElementById("debugButton");
-  if (debugButton) {
-    debugButton.addEventListener("click", function (): void {
-      chrome.runtime.sendMessage({ action: "openExtensionsPage" }, function (response): void {
-        if (response && response.success) {
-          console.log("Redirected to extensions page for debugging");
-        } else {
-          console.log("Failed to redirect to extensions page");
-        }
-      });
-    });
-  }
-
-  // Add event listener for donation button
+  // Adicionar event listener para o botão de doação
   const donateButton = document.getElementById("donateButton");
   if (donateButton) {
-    donateButton.addEventListener("click", function (): void {
+    donateButton.addEventListener("click", function () {
       openDonation();
     });
   }
